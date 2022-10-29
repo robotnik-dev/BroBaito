@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/PlayerHealth.gd" type="Script" id=1]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_right = 1024.0
+margin_bottom = 72.0
+percent_visible = false
+script = ExtResource( 1 )
