@@ -10,6 +10,8 @@ export(float) var movement_speed = 200.0 setget set_movement_speed, get_movement
 export(float) var attack_speed = 20.0 setget set_attack_speed, get_attack_speed
 export(float) var health setget set_health, get_health
 export(float) var max_health = 100.0 setget set_max_health, get_max_health
+export(float) var experience = 0.0 setget set_experience, get_experience
+export(float) var money = 0.0 setget set_money, get_money
 
 
 func set_movement_speed(value: float) -> void:
@@ -40,6 +42,20 @@ func set_max_health(value: float) -> void:
 	
 func get_max_health() -> float:
 	return max_health
+
+func set_experience(value: float) -> void:
+	experience = value
+	SignalHandler.emit_signal("attribute_changed", "experience", value)
+	
+func get_experience() -> float:
+	return experience
+
+func set_money(value: float) -> void:
+	money = value
+	SignalHandler.emit_signal("attribute_changed", "money", value)
+	
+func get_money() -> float:
+	return money
 
 func _ready() -> void:
 	attack_timer.wait_time = 1/self.attack_speed
@@ -81,4 +97,7 @@ func _on_AttackTimer_timeout() -> void:
 	if $WeaponManager.has_method("fire"):
 			$WeaponManager.fire()
 
-
+func _on_LootRange_area_entered(area: Area2D) -> void:
+	if area.owner.has_method("get_experience_value"):
+		self.experience += area.owner.get_experience_value()
+		area.owner.queue_free()

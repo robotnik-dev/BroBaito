@@ -64,6 +64,9 @@ fire={
 2d_physics/layer_6="enemy_hit"
 2d_physics/layer_7="player_bullet"
 2d_physics/layer_8="enemy_bullet"
+2d_physics/layer_9="player_body"
+2d_physics/layer_10="enemy_body"
+2d_physics/layer_11="loot"
 
 [physics]
 

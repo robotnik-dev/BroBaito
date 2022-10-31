@@ -1,12 +1,10 @@
 extends Node2D
 
-
 export(NodePath) var enemy_spawner_path
 onready var enemy_spawner = get_node(enemy_spawner_path)
 
 func _ready() -> void:
 	randomize()
-
 
 func _on_Timer_timeout() -> void:
 	var rect = get_viewport_rect()
