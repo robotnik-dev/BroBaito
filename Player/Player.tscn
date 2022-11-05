@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/PlayerHurtBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/WeaponManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/PlayerCamera.gd" type="Script" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0
@@ -16,10 +17,24 @@ radius = 24.0
 radius = 80.0
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
+z_index = 50
 collision_layer = 256
-collision_mask = 3
+collision_mask = 2
 script = ExtResource( 1 )
 weapon_scene = ExtResource( 3 )
+attack_timer_path = NodePath("AttackTimer")
+weapon_manager_path = NodePath("WeaponManager")
+movement_speed = 600.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_left = 0.1
+drag_margin_top = 0.1
+drag_margin_right = 0.1
+drag_margin_bottom = 0.1
+script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 self_modulate = Color( 0.0392157, 0.470588, 0.0352941, 1 )

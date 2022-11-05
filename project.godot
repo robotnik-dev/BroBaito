@@ -11,17 +11,12 @@ config_version=4
 [application]
 
 config/name="BroBaito"
-run/main_scene="res://RunManager.tscn"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 SignalHandler="*res://SignalHandler.gd"
-
-[display]
-
-window/size/test_width=1920
-window/size/test_height=1080
 
 [gui]
 

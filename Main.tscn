@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/StartScreen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Environment/Wave.tscn" type="PackedScene" id=5]
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+start_screen_scene = ExtResource( 4 )
+wave_scene = ExtResource( 5 )
+world_path = NodePath("World")
+gui_path = NodePath("GUI")
+
+[node name="World" parent="." instance=ExtResource( 3 )]
+
+[node name="GUI" parent="." instance=ExtResource( 2 )]
