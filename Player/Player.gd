@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 var _velocity: Vector2
 var _horizontal: float

@@ -10,7 +10,6 @@ onready var attack_radius = $AttackRadius/CollisionShape2D
 
 var enemies_in_range: Array
 
-
 func init() -> void:
 	pass
 

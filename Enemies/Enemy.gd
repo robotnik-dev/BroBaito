@@ -1,13 +1,19 @@
 extends KinematicBody2D
+class_name Enemy
+
 
 export(NodePath) var health_bar_path
 onready var health_bar: ProgressBar = get_node(health_bar_path)
+
+export(NodePath) var anim_path
+onready var anim: AnimationPlayer = get_node(anim_path)
 
 export(float) var max_health = 100.0
 var health: float
 export(float) var hit_damage = 10.0
 
 var player
+var spawned: bool = false
 
 var velocity: Vector2 = Vector2.ZERO
 export(float) var speed = 100.0
@@ -28,8 +34,14 @@ func _ready() -> void:
 	var player_list = get_tree().get_nodes_in_group("player")
 	if player_list:
 		player = player_list[0]
+	anim.play("Spawn")
+	
 
 func _physics_process(delta: float) -> void:
+	if spawned:
+		move_to_player()
+
+func move_to_player() -> void:
 	if is_instance_valid(player):
 		var direction = (player.global_position - global_position).normalized()
 		velocity = direction
@@ -68,3 +80,9 @@ func _on_AttackSpeed_timeout() -> void:
 	if damagable:
 		for foe in damagable:
 			foe.recieve_damage(hit_damage)
+
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	match anim_name:
+		"Spawn":
+			spawned = true

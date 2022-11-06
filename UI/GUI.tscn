@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/gui.gd" type="Script" id=1]
+[ext_resource path="res://UI/StartScreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/PlayerSelection.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/Wave.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/Shop.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/LevelUp.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/GameOver.tscn" type="PackedScene" id=7]
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+start_screen_scene = ExtResource( 2 )
+player_selection_scene = ExtResource( 3 )
+wave_ui_scene = ExtResource( 4 )
+levelup_scene = ExtResource( 6 )
+shop_scene = ExtResource( 5 )
+game_over_scene = ExtResource( 7 )
