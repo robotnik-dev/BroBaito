@@ -22,7 +22,6 @@ export(float) var money = 0.0 setget set_money, get_money
 
 func set_movement_speed(value: float) -> void:
 	movement_speed = value
-	SignalHandler.emit_signal("attribute_changed", "movement_speed", value)
 
 func get_movement_speed() -> float:
 	return movement_speed
@@ -30,36 +29,32 @@ func get_movement_speed() -> float:
 func set_attack_speed(value: float) -> void:
 	attack_speed = value
 	attack_timer.wait_time = 1/attack_speed
-	SignalHandler.emit_signal("attribute_changed", "attack_speed", value)
+	
 
 func get_attack_speed() -> float:
 	return attack_speed
 	
 func set_health(value: float) -> void:
 	health = value
-	SignalHandler.emit_signal("attribute_changed", "health", value)
 
 func get_health() -> float:
 	return health
 
 func set_max_health(value: float) -> void:
 	max_health = value
-	SignalHandler.emit_signal("attribute_changed", "max_health", value)
-	
+
 func get_max_health() -> float:
 	return max_health
 
 func set_experience(value: float) -> void:
 	experience = value
-	SignalHandler.emit_signal("attribute_changed", "experience", value)
-	
+
 func get_experience() -> float:
 	return experience
 
 func set_money(value: float) -> void:
 	money = value
-	SignalHandler.emit_signal("attribute_changed", "money", value)
-	
+
 func get_money() -> float:
 	return money
 
@@ -70,7 +65,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_apply_movement(delta)
 
-func _apply_movement(delta: float) -> void:
+func _apply_movement(_delta: float) -> void:
 	_horizontal = (
 		Input.get_action_strength("right") - Input.get_action_strength("left")
 	)

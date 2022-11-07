@@ -19,10 +19,10 @@ func set_weapon_slots(value: int) -> void:
 			remove_child(child)
 	
 	weapon_slots = value
-	for i in range(value):
+	for _i in range(value):
 		_add_weapon_slot(weapon_slot_scene)
 
-func _add_weapon_slot(weapon_slot_scene: PackedScene) -> void:
+func _add_weapon_slot(_weapon_slot_scene: PackedScene) -> void:
 	var degree_step = 360 / (weapon_slots)
 	var slots = get_children()
 	var degree = 0
@@ -32,7 +32,7 @@ func _add_weapon_slot(weapon_slot_scene: PackedScene) -> void:
 		slot.position = new_pos
 		degree += degree_step
 	
-	var weapon_slot = weapon_slot_scene.instance()
+	var weapon_slot = _weapon_slot_scene.instance()
 	add_child(weapon_slot)
 	weapon_slot.owner = self
 	

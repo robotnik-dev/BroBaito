@@ -30,7 +30,7 @@ func fire() -> void:
 	var world = get_tree().get_nodes_in_group("world")
 	world[0].add_child(bullet)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var nearest_enemy = _get_position_of_nearest_enemy()
 	look_at(nearest_enemy)
 

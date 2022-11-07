@@ -1,4 +1,4 @@
-extends Node2D
+extends YSort
 
 export(NodePath) var enemy_spawner_path
 onready var enemy_spawner = get_node(enemy_spawner_path)
@@ -78,7 +78,7 @@ func _spawn_enemies() -> void:
 	enemy_spawner.spawn_enemy(random_position)
 
 func _on_WaveTimer_timeout() -> void:
-	SignalHandler.emit_signal("wave_cleared")
+	pass
 
 func _on_SpawnTimer_timeout() -> void:
 	_spawn_enemies()

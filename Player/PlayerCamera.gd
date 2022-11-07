@@ -2,17 +2,17 @@ extends Camera2D
 
 
 func _ready() -> void:
-	SignalHandler.connect("camera_limit_set", self, "_on_camera_limit_set")
+	pass
 
 
 func _on_camera_limit_set(node_name: String, pos: Vector2) -> void:
 	match node_name:
 		"Left":
-			limit_left = pos.x
+			limit_left = int(pos.x)
 		"Right":
-			limit_right = pos.x
+			limit_right = int(pos.x)
 		"Top":
-			limit_top = pos.y
+			limit_top = int(pos.y)
 		"Bottom":
-			limit_bottom = pos.y
+			limit_bottom = int(pos.y)
 		

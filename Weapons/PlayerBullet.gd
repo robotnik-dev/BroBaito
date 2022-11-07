@@ -10,7 +10,7 @@ func init(start_position: Vector2, start_rotation, speed: float, direction: Vect
 	damage = 10.0
 
 func _physics_process(delta: float) -> void:
-	var collision = move_and_collide(velocity * delta)
+	var _col = move_and_collide(velocity * delta)
 
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	if area.owner.has_method("recieve_damage"):

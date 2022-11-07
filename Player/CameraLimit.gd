@@ -13,15 +13,4 @@ export(NodePath) var bottom_path
 onready var bottom = get_node(bottom_path)
 
 func send_limits() -> void:
-	
-	SignalHandler.emit_signal("camera_limit_set", left.name, left.global_position)
-
-
-	SignalHandler.emit_signal("camera_limit_set", right.name, right.global_position)
-
-
-	SignalHandler.emit_signal("camera_limit_set", top.name, top.global_position)
-
-
-	SignalHandler.emit_signal("camera_limit_set", bottom.name, bottom.global_position)
-
+	pass

@@ -1,22 +1,5 @@
+class_name GUI
 extends Control
-
-export(PackedScene) var start_screen_scene
-onready var start_screen = start_screen_scene.instance()
-
-export(PackedScene) var player_selection_scene
-onready var player_selection = player_selection_scene.instance()
-
-export(PackedScene) var wave_ui_scene
-onready var wave_ui = wave_ui_scene.instance()
-
-export(PackedScene) var levelup_scene
-onready var levelup = levelup_scene.instance()
-
-export(PackedScene) var shop_scene
-onready var shop = shop_scene.instance()
-
-export(PackedScene) var game_over_scene
-onready var game_over = game_over_scene.instance()
 
 enum UI {
 	DEFAULT,
@@ -28,60 +11,78 @@ enum UI {
 	GAMEOVER
 }
 
+export(PackedScene) var start_screen_scene
+export(PackedScene) var player_selection_scene
+export(PackedScene) var wave_ui_scene
+export(PackedScene) var levelup_scene
+export(PackedScene) var shop_scene
+export(PackedScene) var game_over_scene
+
 var current: int = UI.DEFAULT
 
-func startscreen() -> void:
-	_remove_current()
-	
-	add_child(start_screen)
+onready var _start_screen = start_screen_scene.instance()
+onready var _player_selection = player_selection_scene.instance()
+onready var _wave_ui = wave_ui_scene.instance()
+onready var _levelup = levelup_scene.instance()
+onready var _shop = shop_scene.instance()
+onready var _game_over = game_over_scene.instance()
+
+func init() -> void:
+	pass
+
+func _ready() -> void:
+	_start_screen.connect("start_game_pressed", self, "_on_start_game_pressed")
+	_player_selection.connect("character_selected", self, "_on_character_selected")
+
+func show_startscreen() -> void:
+	_remove_current_ui()
+	add_child(_start_screen)
 	current = UI.STARTSCREEN
 
-func player_selection() -> void:
-	_remove_current()
-
-	add_child(player_selection)
+func show_player_selection() -> void:
+	_remove_current_ui()
+	add_child(_player_selection)
 	current = UI.PLAYERSELECTION
 
-func start_wave(wave: int, character: Resource) -> void:
-	_remove_current()
-	
-	add_child(wave_ui)
-	wave_ui.wave = wave
-	wave_ui.character = character
+func show_wave_ui() -> void:
+	_remove_current_ui()
+	add_child(_wave_ui)
 	current = UI.WAVE
 
-func levelup_selection() -> void:
-	_remove_current()
-
-	add_child(levelup)
+func show_levelup_selection() -> void:
+	_remove_current_ui()
+	add_child(_levelup)
 	current = UI.LEVELUP
 
-func end_wave(_wave: int) -> void:
-	_remove_current()
-
-func shop() -> void:
-	_remove_current()
-	
-	add_child(shop)
+func show_shop() -> void:
+	_remove_current_ui()
+	add_child(_shop)
 	current = UI.SHOP
 
-func game_over() -> void:
-	_remove_current()
-	
-	add_child(game_over())
+func show_game_over() -> void:
+	_remove_current_ui()
+	add_child(_game_over)
 	current = UI.GAMEOVER
 
-func _remove_current() -> void:
+func _on_start_game_pressed() -> void:
+	show_player_selection()
+
+func _on_character_selected(character: Resource) -> void:
+	# TODO: choose weapon
+	# TODO: choose difficulty
+	pass
+
+func _remove_current_ui() -> void:
 	match current:
 		UI.STARTSCREEN:
-			remove_child(start_screen)
+			remove_child(_start_screen)
 		UI.PLAYERSELECTION:
-			remove_child(player_selection)
+			remove_child(_player_selection)
 		UI.WAVE:
-			remove_child(wave_ui)
+			remove_child(_wave_ui)
 		UI.LEVELUP:
-			remove_child(levelup)
+			remove_child(_levelup)
 		UI.SHOP:
-			remove_child(shop)
+			remove_child(_shop)
 		UI.GAMEOVER:
-			remove_child(game_over)
+			remove_child(_game_over)
