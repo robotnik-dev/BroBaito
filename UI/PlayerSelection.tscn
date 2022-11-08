@@ -1,11 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://UI/player_selection.gd" type="Script" id=2]
-[ext_resource path="res://UI/character_button.gd" type="Script" id=3]
-[ext_resource path="res://Items/normalo.tres" type="Resource" id=4]
-[ext_resource path="res://Items/irrer.tres" type="Resource" id=5]
-[ext_resource path="res://Items/ranged_fighter.tres" type="Resource" id=6]
 
 [node name="PlayerSelection" type="Control"]
 anchor_right = 1.0
@@ -51,8 +47,6 @@ margin_right = 64.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 1 )
 texture_hover = ExtResource( 1 )
-script = ExtResource( 3 )
-character = ExtResource( 4 )
 
 [node name="Irrer" type="TextureButton" parent="MarginContainer/VBoxContainer/Characters"]
 margin_left = 68.0
@@ -60,8 +54,6 @@ margin_right = 132.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 1 )
 texture_hover = ExtResource( 1 )
-script = ExtResource( 3 )
-character = ExtResource( 5 )
 
 [node name="Ranged" type="TextureButton" parent="MarginContainer/VBoxContainer/Characters"]
 margin_left = 136.0
@@ -69,5 +61,3 @@ margin_right = 200.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 1 )
 texture_hover = ExtResource( 1 )
-script = ExtResource( 3 )
-character = ExtResource( 6 )

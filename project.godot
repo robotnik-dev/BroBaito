@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://Weapons/bullet.gd"
+"path": "res://Weapons/Bullet.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Enemy",
@@ -24,27 +24,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/gui.gd"
 }, {
-"base": "Resource",
+"base": "Node",
 "class": "Item",
 "language": "GDScript",
 "path": "res://Items/item.gd"
 }, {
-"base": "Node",
-"class": "Main",
-"language": "GDScript",
-"path": "res://Core/main.gd"
-}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Player/Player.gd"
+"path": "res://Player/player.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
 "Enemy": "",
 "GUI": "",
 "Item": "",
-"Main": "",
 "Player": ""
 }
 

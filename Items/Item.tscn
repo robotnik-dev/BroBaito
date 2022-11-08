@@ -1,7 +1,6 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Items/item.gd" type="Script" id=1]
 
-[resource]
+[node name="Item" type="Node"]
 script = ExtResource( 1 )
-name = "Normalo"
