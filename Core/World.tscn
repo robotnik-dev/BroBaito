@@ -1,14 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Core/world.gd" type="Script" id=1]
 [ext_resource path="res://Wave/Wave.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Wave/Arena.tscn" type="PackedScene" id=4]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" groups=["world"]]
 script = ExtResource( 1 )
 wave_path = NodePath("Wave")
 arena_path = NodePath("Arena")
+player_scene = ExtResource( 3 )
 
 [node name="Wave" parent="." instance=ExtResource( 2 )]
 
 [node name="Arena" parent="." instance=ExtResource( 4 )]
+position = Vector2( 960, 960 )
+
+[node name="PlayerSpawn" type="Position2D" parent="."]
+position = Vector2( 960, 960 )
+__meta__ = {
+"_gizmo_extents_": 289.1
+}

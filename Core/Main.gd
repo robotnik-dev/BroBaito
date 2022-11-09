@@ -7,5 +7,6 @@ onready var world = get_node(world_path)
 onready var gui = get_node(gui_path)
 
 func _ready() -> void:
-	world.hide()
+	gui.connect("selection_done", world, "_on_selection_done")
+	world.connect("player_died", gui, "_on_player_died")
 	gui.show_startscreen()

@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://Weapons/Bullet.gd"
+"path": "res://Weapons/bullet.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://Enemies/Enemy.gd"
+"path": "res://Enemies/enemy.gd"
 }, {
 "base": "Control",
 "class": "GUI",
@@ -29,17 +29,29 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Items/item.gd"
 }, {
+"base": "Resource",
+"class": "ItemData",
+"language": "GDScript",
+"path": "res://Items/item_data.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player/player.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "PlayerBullet",
+"language": "GDScript",
+"path": "res://Weapons/player_bullet.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
 "Enemy": "",
 "GUI": "",
 "Item": "",
-"Player": ""
+"ItemData": "",
+"Player": "",
+"PlayerBullet": ""
 }
 
 [application]

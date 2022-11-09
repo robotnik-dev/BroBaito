@@ -1,6 +1,8 @@
 class_name GUI
 extends Control
 
+signal selection_done(character, start_weapon, difficulty)
+
 enum UI {
 	DEFAULT,
 	STARTSCREEN,
@@ -33,6 +35,7 @@ func init() -> void:
 func _ready() -> void:
 	_start_screen.connect("start_game_pressed", self, "_on_start_game_pressed")
 	_player_selection.connect("character_selected", self, "_on_character_selected")
+	_game_over.connect("new_game_pressed", self, "_on_new_game_pressed")
 
 func show_startscreen() -> void:
 	_remove_current_ui()
@@ -67,10 +70,17 @@ func show_game_over() -> void:
 func _on_start_game_pressed() -> void:
 	show_player_selection()
 
-func _on_character_selected(character: Resource) -> void:
+func _on_new_game_pressed() -> void:
+	show_startscreen()
+
+func _on_character_selected(character) -> void:
 	# TODO: choose weapon
 	# TODO: choose difficulty
-	pass
+	emit_signal("selection_done", character.name, "","")
+	show_wave_ui()
+
+func _on_player_died() -> void:
+	show_game_over()
 
 func _remove_current_ui() -> void:
 	match current:

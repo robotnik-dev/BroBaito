@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Items/item.gd" type="Script" id=1]
+[ext_resource path="res://Items/duck.tres" type="Resource" id=2]
+
+[node name="Duck" type="Node"]
+script = ExtResource( 1 )
+item_data = ExtResource( 2 )

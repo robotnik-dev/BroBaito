@@ -1,3 +1,4 @@
+class_name PlayerBullet
 extends KinematicBody2D
 
 var velocity: Vector2

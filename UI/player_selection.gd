@@ -12,7 +12,7 @@ func _ready() -> void:
 		btn.connect("pressed", self, "_on_character_button_pressed", [btn])
 
 func _on_character_button_pressed(btn) -> void:
-	emit_signal("character_selected")
+	emit_signal("character_selected", btn)
 
 func _get_configuration_warning() -> String:
 	var warning = ""

@@ -1,7 +1,8 @@
-extends Node
 class_name Item
+extends Node
 
-var item_name: String
-var description: String
+export(Resource) var item_data
 
-# TODO: multiplier function
+func _ready() -> void:
+	owner.damage += item_data.modifier.get("damage")
+	owner.luck += item_data.modifier.get("luck")

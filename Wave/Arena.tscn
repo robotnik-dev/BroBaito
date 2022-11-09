@@ -38,28 +38,6 @@ position = Vector2( 0, 488 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
-[node name="BulletBounds" type="Area2D" parent="."]
-scale = Vector2( 2.5, 2.5 )
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds"]
-position = Vector2( -488, 0 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="BulletBounds"]
-position = Vector2( 488, 0 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="BulletBounds"]
-position = Vector2( 0, -488 )
-rotation = 1.5708
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="BulletBounds"]
-position = Vector2( 0, 480 )
-rotation = 1.5708
-shape = SubResource( 1 )
-
 [node name="CameraLimits" type="Node2D" parent="."]
 script = ExtResource( 3 )
 left_path = NodePath("Left")

@@ -15,14 +15,17 @@ func start() -> void:
 	_start_spawn_timer()
 
 func stop() -> void:
-	_despawn_enemies()
 	_reset_timer()
+	_despawn_enemies()
 
 func _despawn_enemies() -> void:
-	pass
- 
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	for enemy in enemies:
+		enemy.queue_free()
+	
 func _reset_timer() -> void:
-	pass
+	$SpawnTimer.stop()
+	$WaveTimer.stop()
 
 func _set_difficulty() -> void:
 	pass
@@ -37,7 +40,7 @@ func _start_spawn_timer() -> void:
 	
 func _spawn_enemies(number: int) -> void:
 	var beginning = Vector2.ZERO
-	var end = _arena.get_size()
+	var end = _arena.size
 	for i in range(number):
 		var random_x = rand_range(beginning.x, end.x)
 		var random_y = rand_range(beginning.y, end.y)
