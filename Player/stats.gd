@@ -1,6 +1,8 @@
 class_name Stats
 extends Resource
 
+signal attribute_changed(attribute, value)
+
 export(float) var max_hp setget set_max_hp, get_max_hp
 export(float) var hp_regen setget set_hp_regen, get_hp_regen
 export(float) var lifesteal setget set_lifesteal, get_lifesteal
@@ -50,114 +52,133 @@ func add_bonus(stat: String, value: float) -> void:
 
 func set_max_hp(value: float) -> void:
 	max_hp = value
+	emit_signal("attribute_changed", "max_hp", value)
 
 func get_max_hp() -> float:
 	return max_hp + max_hp_bonus
 
 func set_hp_regen(value: float) -> void:
 	hp_regen = value
+	emit_signal("attribute_changed", "hp_regen", value)	
 
 func get_hp_regen() -> float:
 	return hp_regen + hp_regen_bonus
 
 func set_lifesteal(value: float) -> void:
 	lifesteal = value
+	emit_signal("attribute_changed", "lifesteal", value)	
 
 func get_lifesteal() -> float:
 	return lifesteal + lifesteal_bonus
 
 func set_damage(value: float) -> void:
 	damage = value
+	emit_signal("attribute_changed", "damage", value)
 
 func get_damage() -> float:
 	return damage + damage_bonus
 
 func set_meele_damage(value: float) -> void:
 	meele_damage = value
+	emit_signal("attribute_changed", "meele_damage", value)
 
 func get_meele_damage() -> float:
 	return meele_damage + meele_damage_bonus
 
 func set_ranged_damage(value: float) -> void:
 	ranged_damage = value
+	emit_signal("attribute_changed", "ranged_damage", value)
 
 func get_ranged_damage() -> float:
 	return ranged_damage + ranged_damage_bonus
 
 func set_elemental_damage(value: float) -> void:
 	elemental_damage = value
+	emit_signal("attribute_changed", "elemental_damage", value)	
 
 func get_elemental_damage() -> float:
 	return elemental_damage + elemental_damage_bonus
 
 func set_attack_speed(value: float) -> void:
 	attack_speed = value
+	emit_signal("attribute_changed", "attack_speed", value)	
 
 func get_attack_speed() -> float:
 	return attack_speed + attack_speed_bonus
 
 func set_crit_chance(value: float) -> void:
 	crit_chance = value
+	emit_signal("attribute_changed", "crit_chance", value)	
 
 func get_crit_chance() -> float:
-	return crit_chance + crit_chance_bonus
+	return crit_chance + crit_chance_bonus	
 
 func set_engineering(value: float) -> void:
 	engineering = value
+	emit_signal("attribute_changed", "engineering", value)	
 
 func get_engineering() -> float:
 	return engineering + engineering_bonus
 
 func set_attack_range(value: float) -> void:
 	attack_range = value
+	emit_signal("attribute_changed", "attack_range", value)	
 
 func get_attack_range() -> float:
 	return attack_range + ranged_damage_bonus
 
 func set_armor(value: float) -> void:
 	armor = value
+	emit_signal("attribute_changed", "armor", value)
 
 func get_armor() -> float:
 	return armor + armor_bonus
 
 func set_dodge(value: float) -> void:
 	dodge = value
+	emit_signal("attribute_changed", "dodge", value)	
 
 func get_dodge() -> float:
 	return dodge + dodge_bonus
 
 func set_speed(value: float) -> void:
 	speed = value
+	emit_signal("attribute_changed", "speed", value)	
 
 func get_speed() -> float:
 	return speed + speed_bonus
 	
 func set_luck(value: float) -> void:
 	luck = value
+	emit_signal("attribute_changed", "luck", value)	
 
 func get_luck() -> float:
 	return luck + luck_bonus
 
 func set_harvesting(value: float) -> void:
 	harvesting = value
+	emit_signal("attribute_changed", "harvesting", value)
 
 func get_harvesting() -> float:
 	return harvesting + harvesting_bonus
 
 func set_experience(value: float) -> void:
 	experience = value
+	emit_signal("attribute_changed", "experience", value)	
 
 func get_experience() -> float:
 	return experience
 
 func set_money(value: float) -> void:
 	money = value
+	emit_signal("attribute_changed", "money", value)
 
 func get_money() -> float:
 	return money
 
 func set_hp(value: float) -> void:
 	hp = clamp(value, value, self.max_hp)
+	emit_signal("attribute_changed", "hp", value)	
 
 func get_hp() -> float:
 	return hp

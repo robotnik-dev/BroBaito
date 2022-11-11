@@ -50,6 +50,7 @@ func show_player_selection() -> void:
 func show_wave_ui() -> void:
 	_remove_current_ui()
 	add_child(_wave_ui)
+	_wave_ui.reset()
 	current = UI.WAVE
 
 func show_levelup_selection() -> void:

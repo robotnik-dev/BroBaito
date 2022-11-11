@@ -5,6 +5,8 @@ extends Control
 signal character_selected
 
 export(Resource) var item_data
+export(String) var path_to_scene
+
 var player_stats = preload("res://Player/player_stats.tres")
 
 func _ready() -> void:
@@ -39,5 +41,5 @@ func add_bonuses() -> void:
 func _on_button_pressed() -> void:
 	var player = get_tree().get_nodes_in_group("player")[0]
 #	var item_scene = load(get_tree().edited_scene_root.filename)
-	player.add_item(self)
+	player.add_item(path_to_scene)
 	emit_signal("character_selected")

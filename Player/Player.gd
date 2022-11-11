@@ -34,10 +34,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func activate_camera(value: bool) -> void:
 	camera.current = value
 
-func add_item(item: Item) -> void:
-#	var item = item_scene.instance()
-	
-	item.get_parent().remove_child(item)
+func add_item(item_path: String) -> void:
+	var item_scene = load(item_path)
+	var item = item_scene.instance()
 	items.add_child(item)
 	_hide_items()
 
@@ -50,6 +49,8 @@ func recieve_damage(damage: float) -> void:
 		die()
 
 func die() -> void:
+	stats.hp = stats.max_hp
+	# TODO: delete weapons
 	emit_signal("died")
 
 func reset_stats() -> void:
@@ -78,5 +79,5 @@ func _on_AttackTimer_timeout() -> void:
 
 func _on_LootRange_area_entered(area: Area2D) -> void:
 	if area.owner.has_method("get_experience_value"):
-		self.experience += area.owner.get_experience_value()
+		stats.experience += area.owner.get_experience_value()
 		area.owner.queue_free()

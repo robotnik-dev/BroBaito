@@ -30,6 +30,7 @@ stats = ExtResource( 8 )
 _item_scene = ExtResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+current = true
 drag_margin_left = 0.1
 drag_margin_top = 0.1
 drag_margin_right = 0.1

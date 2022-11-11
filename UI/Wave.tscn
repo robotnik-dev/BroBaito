@@ -5,7 +5,6 @@
 
 [node name="Wave" type="CanvasLayer"]
 script = ExtResource( 1 )
-wave_label_path = NodePath("WaveLabel")
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 

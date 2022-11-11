@@ -1,5 +1,5 @@
 tool
-extends Control
+extends CanvasLayer
 
 signal character_selected(character)
 

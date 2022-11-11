@@ -17,6 +17,7 @@ func start() -> void:
 func stop() -> void:
 	_reset_timer()
 	_despawn_enemies()
+	# TODO: collect loot
 
 func _despawn_enemies() -> void:
 	var enemies = get_tree().get_nodes_in_group("enemy")

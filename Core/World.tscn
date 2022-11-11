@@ -9,7 +9,7 @@
 script = ExtResource( 1 )
 wave_path = NodePath("Wave")
 arena_path = NodePath("Arena")
-player_scene = ExtResource( 3 )
+player_path = NodePath("Player")
 
 [node name="Wave" parent="." instance=ExtResource( 2 )]
 
@@ -21,3 +21,5 @@ position = Vector2( 960, 960 )
 __meta__ = {
 "_gizmo_extents_": 289.1
 }
+
+[node name="Player" parent="." instance=ExtResource( 3 )]

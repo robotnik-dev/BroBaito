@@ -3,9 +3,7 @@
 [ext_resource path="res://Items/Normalo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/player_selection.gd" type="Script" id=2]
 
-[node name="PlayerSelection" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="PlayerSelection" type="CanvasLayer"]
 script = ExtResource( 2 )
 character_container_path = NodePath("MarginContainer/VBoxContainer/GridContainer")
 

@@ -6,6 +6,7 @@
 
 [node name="Normalo" instance=ExtResource( 1 )]
 item_data = ExtResource( 2 )
+path_to_scene = "res://Items/Normalo.tscn"
 
 [node name="TextureButton" parent="." index="0"]
 texture_normal = ExtResource( 3 )

@@ -1,5 +1,5 @@
 tool
-extends Control
+extends CanvasLayer
 
 signal start_game_pressed
 

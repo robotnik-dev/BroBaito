@@ -1,17 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://UI/player_health.gd" type="Script" id=1]
-[ext_resource path="res://UI/player_experience.gd" type="Script" id=2]
+[ext_resource path="res://UI/hud.gd" type="Script" id=1]
 
 [node name="HUD" type="CanvasLayer"]
 layer = 100
+script = ExtResource( 1 )
+experience_path = NodePath("PlayerExperience")
+health_path = NodePath("PlayerHealth")
 
 [node name="PlayerHealth" type="ProgressBar" parent="."]
 margin_right = 4.0
 margin_bottom = 2.0
 rect_min_size = Vector2( 200, 20 )
 percent_visible = false
-script = ExtResource( 1 )
 
 [node name="PlayerExperience" type="ProgressBar" parent="."]
 margin_top = 24.0
@@ -19,4 +20,3 @@ margin_right = 4.0
 margin_bottom = 38.0
 rect_min_size = Vector2( 200, 0 )
 percent_visible = false
-script = ExtResource( 2 )
