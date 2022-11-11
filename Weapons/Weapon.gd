@@ -14,7 +14,7 @@ func init() -> void:
 	pass
 
 func _ready() -> void:
-	attack_radius.shape.radius = player.attack_range
+	attack_radius.shape.radius = player.stats.attack_range
 
 func fire() -> void:
 	if not enemies_in_range:

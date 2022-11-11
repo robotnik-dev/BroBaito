@@ -73,10 +73,10 @@ func _on_start_game_pressed() -> void:
 func _on_new_game_pressed() -> void:
 	show_startscreen()
 
-func _on_character_selected(character) -> void:
+func _on_character_selected() -> void:
 	# TODO: choose weapon
 	# TODO: choose difficulty
-	emit_signal("selection_done", character.name, "","")
+	emit_signal("selection_done")
 	show_wave_ui()
 
 func _on_player_died() -> void:

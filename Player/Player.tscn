@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Player/WeaponManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Player/player_camera.gd" type="Script" id=6]
 [ext_resource path="res://Items/Duck.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Player/player_stats.tres" type="Resource" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0
@@ -25,9 +26,10 @@ script = ExtResource( 1 )
 weapon_scene = ExtResource( 3 )
 attack_timer_path = NodePath("AttackTimer")
 weapon_manager_path = NodePath("WeaponManager")
+stats = ExtResource( 8 )
+_item_scene = ExtResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-current = true
 drag_margin_left = 0.1
 drag_margin_top = 0.1
 drag_margin_right = 0.1
@@ -63,10 +65,6 @@ collision_mask = 1024
 shape = SubResource( 3 )
 
 [node name="Items" type="Node" parent="."]
-
-[node name="Duck" parent="Items" instance=ExtResource( 7 )]
-
-[node name="Duck2" parent="Items" instance=ExtResource( 7 )]
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
 [connection signal="area_entered" from="LootRange" to="." method="_on_LootRange_area_entered"]

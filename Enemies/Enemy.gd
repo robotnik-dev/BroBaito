@@ -1,26 +1,22 @@
 extends KinematicBody2D
 class_name Enemy
 
+export(PackedScene) var loot_scene
 export(NodePath) var health_bar_path
-onready var health_bar: ProgressBar = get_node(health_bar_path)
-
 export(NodePath) var anim_path
-onready var anim: AnimationPlayer = get_node(anim_path)
-
 export(float) var max_health = 10.0
-var health: float
 export(float) var hit_damage = 1.0
-
-var player
-var spawned: bool = false
-
-var velocity: Vector2 = Vector2.ZERO
 export(float) var speed = 100.0
-
-var damagable: Array
 export(float) var attack_speed = 1.0
 
-export(PackedScene) var loot_scene
+var health: float
+var spawned: bool = false
+var velocity: Vector2 = Vector2.ZERO
+var damagable: Array
+var player
+
+onready var anim: AnimationPlayer = get_node(anim_path)
+onready var health_bar: ProgressBar = get_node(health_bar_path)
 
 func init(spawn_location: Vector2) -> void:
 	global_position = spawn_location

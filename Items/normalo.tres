@@ -1,14 +1,14 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Items/item_data.gd" type="Script" id=1]
-[ext_resource path="res://steelwings.jpg" type="Texture" id=2]
+[ext_resource path="res://archer1.jpg" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-item_name = ""
-effect = [ "Damage +10%", "Luck -2%" ]
+item_name = "Normalo"
+effect = [ "+5 % Damage", "+5 % Harvesting" ]
 image = ExtResource( 2 )
 modifier = {
-"damage": 10.0,
-"luck": -2.0
+"damage": 5.0,
+"harvesting": 10.0
 }

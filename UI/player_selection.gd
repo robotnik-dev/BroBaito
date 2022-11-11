@@ -9,10 +9,10 @@ onready var character_container = get_node(character_container_path)
 
 func _ready() -> void:
 	for btn in character_container.get_children():
-		btn.connect("pressed", self, "_on_character_button_pressed", [btn])
+		btn.connect("character_selected", self, "_on_character_button_pressed")
 
-func _on_character_button_pressed(btn) -> void:
-	emit_signal("character_selected", btn)
+func _on_character_button_pressed() -> void:
+	emit_signal("character_selected")
 
 func _get_configuration_warning() -> String:
 	var warning = ""

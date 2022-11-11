@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/gui.gd"
 }, {
-"base": "Node",
+"base": "Control",
 "class": "Item",
 "language": "GDScript",
 "path": "res://Items/item.gd"
@@ -43,6 +43,11 @@ _global_script_classes=[ {
 "class": "PlayerBullet",
 "language": "GDScript",
 "path": "res://Weapons/player_bullet.gd"
+}, {
+"base": "Resource",
+"class": "Stats",
+"language": "GDScript",
+"path": "res://Player/stats.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
@@ -51,7 +56,8 @@ _global_script_class_icons={
 "Item": "",
 "ItemData": "",
 "Player": "",
-"PlayerBullet": ""
+"PlayerBullet": "",
+"Stats": ""
 }
 
 [application]
