@@ -4,7 +4,7 @@ class_name Enemy
 export(PackedScene) var loot_scene
 export(NodePath) var health_bar_path
 export(NodePath) var anim_path
-export(float) var max_health = 10.0
+export(float) var max_health = 100.0
 export(float) var hit_damage = 1.0
 export(float) var speed = 100.0
 export(float) var attack_speed = 1.0
@@ -49,14 +49,15 @@ func move_to_player() -> void:
 			velocity = direction
 			velocity = move_and_slide(velocity * speed)
 
-func recieve_damage(damage: float) -> float:
+func recieve_damage(damage: float) -> void:
 	health = health - damage
 	health_bar.value = health
 	if health <= 0:
 		die()
-	return damage
 
 func die() -> void:
+	if is_in_group("enemy"):
+		remove_from_group("enemy")
 	drop_loot()
 	queue_free()
 
@@ -65,6 +66,10 @@ func drop_loot() -> void:
 	loot.global_position = global_position
 	var world = get_tree().get_nodes_in_group("world")
 	world[0].call_deferred("add_child", loot)
+
+func spawn() -> void:
+	add_to_group("enemy")
+	spawned = true
 
 func _on_EnemyHitBox_area_entered(area: Area2D) -> void:
 	if area.owner.has_method("recieve_damage"):
@@ -86,4 +91,4 @@ func _on_AttackSpeed_timeout() -> void:
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	match anim_name:
 		"Spawn":
-			spawned = true
+			spawn()

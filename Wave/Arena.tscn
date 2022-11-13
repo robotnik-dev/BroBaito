@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Wave/arena.gd" type="Script" id=2]
-[ext_resource path="res://Player/camera_limit.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9, 512 )
@@ -38,21 +37,14 @@ position = Vector2( 0, 488 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
-[node name="CameraLimits" type="Node2D" parent="."]
-script = ExtResource( 3 )
-left_path = NodePath("Left")
-right_path = NodePath("Right")
-top_path = NodePath("Top")
-bottom_path = NodePath("Bottom")
-
-[node name="Left" type="Position2D" parent="CameraLimits"]
+[node name="LeftLimit" type="Position2D" parent="."]
 position = Vector2( -976, 0 )
 
-[node name="Right" type="Position2D" parent="CameraLimits"]
+[node name="RightLimit" type="Position2D" parent="."]
 position = Vector2( 976, 0 )
 
-[node name="Top" type="Position2D" parent="CameraLimits"]
+[node name="TopLimit" type="Position2D" parent="."]
 position = Vector2( 0, -960 )
 
-[node name="Bottom" type="Position2D" parent="CameraLimits"]
+[node name="BottomLimit" type="Position2D" parent="."]
 position = Vector2( 0, 976 )

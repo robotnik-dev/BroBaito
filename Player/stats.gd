@@ -44,7 +44,8 @@ var money_bonus = 0.0 setget set_money_bonus, get_money_bonus
 var experience_bonus = 0.0 setget set_experience_bonus, get_experience_bonus
 
 func reset() -> void:
-	pass
+	self.hp = self.max_hp
+	#TODO reset to normal
 
 func add_bonus(stat: String, value: float) -> void:
 	var _old = call("get_" + stat + "_bonus")

@@ -23,15 +23,13 @@ func set_weapon_slots(value: int) -> void:
 
 func add_weapon(weapon_scene: PackedScene) -> void:
 	for slot in get_children():
-		if slot.has_method("is_free"):
-			if slot.is_free():
-				slot.add_weapon(weapon_scene)
-				break
+		var success = slot.add_weapon(weapon_scene)
+		if success:
+			break
 
-func fire() -> void:
+func delete_all_weapons() -> void:
 	for slot in get_children():
-		if slot.has_method("fire_weapon_in_slot"):
-			slot.fire_weapon_in_slot()
+		slot.delete_weapon()
 
 func _add_weapon_slot(_weapon_slot_scene: PackedScene) -> void:
 	var degree_step = 360 / (weapon_slots)

@@ -40,5 +40,9 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRadius"]
 shape = SubResource( 1 )
 
+[node name="Cooldown" type="Timer" parent="."]
+autostart = true
+
 [connection signal="area_entered" from="AttackRadius" to="." method="_on_AttackRadius_area_entered"]
 [connection signal="area_exited" from="AttackRadius" to="." method="_on_AttackRadius_area_exited"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

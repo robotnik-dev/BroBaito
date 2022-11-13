@@ -1,6 +1,7 @@
 class_name PlayerBullet
 extends KinematicBody2D
 
+var owning_weapon
 var velocity: Vector2
 var damage: float
 
@@ -16,5 +17,3 @@ func _physics_process(delta: float) -> void:
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	if area.owner.has_method("recieve_damage"):
 		area.owner.recieve_damage(damage)
-	
-	queue_free()

@@ -1,17 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Core/world.gd" type="Script" id=1]
-[ext_resource path="res://Wave/Wave.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/EnemySpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Wave/Arena.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Wave/WaveManager.tscn" type="PackedScene" id=5]
 
-[node name="World" type="Node2D" groups=["world"]]
+[node name="World" type="YSort" groups=["world"]]
 script = ExtResource( 1 )
-wave_path = NodePath("Wave")
-arena_path = NodePath("Arena")
-player_path = NodePath("Player")
-
-[node name="Wave" parent="." instance=ExtResource( 2 )]
+player_scene = ExtResource( 3 )
 
 [node name="Arena" parent="." instance=ExtResource( 4 )]
 position = Vector2( 960, 960 )
@@ -22,4 +19,6 @@ __meta__ = {
 "_gizmo_extents_": 289.1
 }
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="WaveManager" parent="." instance=ExtResource( 5 )]
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 2 )]

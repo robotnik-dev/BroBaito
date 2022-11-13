@@ -1,13 +1,16 @@
-extends YSort
+extends Node
 
-export(NodePath) var enemy_spawner_path
+export(PackedScene) var enemy_scene
 
 var _arena: Node2D
+var _enemy_spawner: Node
 
-onready var enemy_spawner = get_node(enemy_spawner_path)
+onready var spawn_timer = $SpawnTimer
+onready var wave_timer = $WaveTimer
 
-func init(arena: Node2D) -> void:
+func init(arena: Node2D, enemy_spawner: Node) -> void:
 	_arena = arena
+	_enemy_spawner = enemy_spawner
 
 func start() -> void:
 	_set_difficulty()
@@ -25,19 +28,19 @@ func _despawn_enemies() -> void:
 		enemy.queue_free()
 	
 func _reset_timer() -> void:
-	$SpawnTimer.stop()
-	$WaveTimer.stop()
+	spawn_timer.stop()
+	wave_timer.stop()
 
 func _set_difficulty() -> void:
 	pass
 
 func _start_wave_timer() -> void:
-	$WaveTimer.wait_time = 2
-	$WaveTimer.start()
+	wave_timer.wait_time = 2
+	wave_timer.start()
 
 func _start_spawn_timer() -> void:
-	$SpawnTimer.wait_time = 1
-	$SpawnTimer.start()
+	spawn_timer.wait_time = 1
+	spawn_timer.start()
 	
 func _spawn_enemies(number: int) -> void:
 	var beginning = Vector2.ZERO
@@ -46,7 +49,7 @@ func _spawn_enemies(number: int) -> void:
 		var random_x = rand_range(beginning.x, end.x)
 		var random_y = rand_range(beginning.y, end.y)
 		var random_position = Vector2(random_x, random_y)
-		enemy_spawner.spawn_enemy(random_position)
+		_enemy_spawner.spawn_enemy(random_position, enemy_scene)
 
 func _on_WaveTimer_timeout() -> void:
 	pass

@@ -2,19 +2,21 @@ extends Node2D
 
 export(PackedScene) var bullet_scene
 export(float) var bullet_speed = 1000.0
-
-onready var nozzle = $Nozzle
-
-onready var attack_radius = $AttackRadius/CollisionShape2D
+export(float) var attack_speed = 10.0
 
 var enemies_in_range: Array
-onready var player = get_tree().get_nodes_in_group("player")[0]
+
+onready var player_stats = preload("res://Player/player_stats.tres")
+onready var nozzle = $Nozzle
+onready var attack_radius = $AttackRadius/CollisionShape2D
+onready var cooldown = $Cooldown
 
 func init() -> void:
 	pass
 
 func _ready() -> void:
-	attack_radius.shape.radius = player.stats.attack_range
+	attack_radius.shape.radius = player_stats.attack_range
+	cooldown.wait_time = 1 / (attack_speed + player_stats.attack_speed)
 
 func fire() -> void:
 	if not enemies_in_range:
@@ -27,8 +29,9 @@ func fire() -> void:
 	bullet.init(spawn_location, spawn_rotation, bullet_speed, direction)
 	var world = get_tree().get_nodes_in_group("world")
 	world[0].add_child(bullet)
+	bullet.owning_weapon = self
 
-func _process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var nearest_enemy = _get_position_of_nearest_enemy()
 	look_at(nearest_enemy)
 
@@ -59,5 +62,8 @@ func _on_AttackRadius_area_exited(area: Area2D) -> void:
 		var idx = enemies_in_range.find(area.owner)
 		if idx != -1:
 			enemies_in_range.remove(idx)
-	if area.owner is PlayerBullet:
+	elif area.owner.owning_weapon == self:
 		area.owner.call_deferred("queue_free")
+
+func _on_Cooldown_timeout() -> void:
+	fire()

@@ -5,21 +5,24 @@ extends KinematicBody2D
 signal died
 
 export(PackedScene) var weapon_scene
-export(NodePath) var attack_timer_path
 export(NodePath) var weapon_manager_path
 export(Resource) var stats
 
 #DEBUG
 export(PackedScene) var _item_scene
 
+var get_camera_limits
+
 var _horizontal: float
 var _vertical: float
 var _velocity: Vector2
 
 onready var weapon_manager = get_node(weapon_manager_path)
-onready var attack_timer = get_node(attack_timer_path)
 onready var camera = $Camera2D
 onready var items = $Items
+
+func init() -> void:
+	set_camera_limits()
 
 func _ready() -> void:
 	_hide_items()
@@ -30,6 +33,13 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire"):
 		add_weapon(weapon_scene)
+
+func set_camera_limits() -> void:
+	var limits = get_camera_limits.call_func()
+	camera.limit_left = limits[0]
+	camera.limit_right = limits[1]
+	camera.limit_top = limits[2]
+	camera.limit_bottom = limits[3]
 
 func activate_camera(value: bool) -> void:
 	camera.current = value
@@ -49,8 +59,8 @@ func recieve_damage(damage: float) -> void:
 		die()
 
 func die() -> void:
-	stats.hp = stats.max_hp
 	# TODO: delete weapons
+	weapon_manager.delete_all_weapons()
 	emit_signal("died")
 
 func reset_stats() -> void:
@@ -72,10 +82,6 @@ func _apply_movement(_delta: float) -> void:
 	_velocity.y = _vertical
 	_velocity = _velocity.normalized() * stats.speed
 	_velocity = move_and_slide(_velocity)
-
-func _on_AttackTimer_timeout() -> void:
-	if weapon_manager.has_method("fire"):
-			weapon_manager.fire()
 
 func _on_LootRange_area_entered(area: Area2D) -> void:
 	if area.owner.has_method("get_experience_value"):

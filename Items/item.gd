@@ -39,7 +39,8 @@ func add_bonuses() -> void:
 
 
 func _on_button_pressed() -> void:
-	var player = get_tree().get_nodes_in_group("player")[0]
-#	var item_scene = load(get_tree().edited_scene_root.filename)
-	player.add_item(path_to_scene)
-	emit_signal("character_selected")
+	#TODO items as resource on player
+	pass
+#	var player = get_tree().get_nodes_in_group("player")[0]
+#	player.add_item(path_to_scene)
+#	emit_signal("character_selected")
