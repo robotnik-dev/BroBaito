@@ -5,7 +5,7 @@
 [ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/PlayerHurtBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/WeaponManager.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Items/Duck.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Items/item_manager.gd" type="Script" id=6]
 [ext_resource path="res://Player/player_stats.tres" type="Resource" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -25,7 +25,6 @@ script = ExtResource( 1 )
 weapon_scene = ExtResource( 3 )
 weapon_manager_path = NodePath("WeaponManager")
 stats = ExtResource( 8 )
-_item_scene = ExtResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -59,8 +58,13 @@ collision_mask = 1024
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LootRange"]
 shape = SubResource( 3 )
 
-[node name="Items" type="Node" parent="."]
+[node name="ItemManager" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="area_entered" from="LootRange" to="." method="_on_LootRange_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="PlayerHurtBox"]

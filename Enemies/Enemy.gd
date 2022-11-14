@@ -56,8 +56,6 @@ func recieve_damage(damage: float) -> void:
 		die()
 
 func die() -> void:
-	if is_in_group("enemy"):
-		remove_from_group("enemy")
 	drop_loot()
 	queue_free()
 
@@ -68,7 +66,6 @@ func drop_loot() -> void:
 	world[0].call_deferred("add_child", loot)
 
 func spawn() -> void:
-	add_to_group("enemy")
 	spawned = true
 
 func _on_EnemyHitBox_area_entered(area: Area2D) -> void:

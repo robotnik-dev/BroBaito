@@ -18,13 +18,13 @@ func _ready():
 func start_wave() -> void:
 	show()
 	add_child(player)
-	player.init()	
 	player.global_position = player_spawn.global_position
 	wave_manager.start()
 
-func start_first_wave() -> void:
+func start_first_wave(selection: Dictionary) -> void:
 	show()
-	add_child(player)	
+	add_child(player)
+	player.init(selection)
 	player.reset_stats()
 	player.global_position = player_spawn.global_position
 	wave_manager.start()
@@ -39,6 +39,6 @@ func _on_player_died() -> void:
 	end_wave()
 	emit_signal("player_died")
 
-func _on_selection_done() -> void:
-	start_first_wave()
+func _on_selection_done(selection: Dictionary) -> void:
+	start_first_wave(selection)
 

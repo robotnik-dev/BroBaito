@@ -5,11 +5,17 @@ var owning_weapon
 var velocity: Vector2
 var damage: float
 
-func init(start_position: Vector2, start_rotation, speed: float, direction: Vector2) -> void:
-	global_position = start_position
-	rotation = start_rotation
-	velocity = direction * speed
-	damage = 10.0
+func init(
+		_start_position: Vector2,
+		_start_rotation,
+		_speed: float,
+		_direction: Vector2,
+		_damage: float
+		) -> void:
+	global_position = _start_position
+	rotation = _start_rotation
+	velocity = _direction * _speed
+	damage = _damage
 
 func _physics_process(delta: float) -> void:
 	var _col = move_and_collide(velocity * delta)

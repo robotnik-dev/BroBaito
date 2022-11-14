@@ -1,7 +1,7 @@
 tool
 extends CanvasLayer
 
-signal character_selected(character)
+signal character_selected(character_data)
 
 export(NodePath) var character_container_path
 
@@ -9,10 +9,10 @@ onready var character_container = get_node(character_container_path)
 
 func _ready() -> void:
 	for btn in character_container.get_children():
-		btn.connect("character_selected", self, "_on_character_button_pressed")
+		btn.connect("pressed", self, "_on_character_button_pressed", [btn])
 
-func _on_character_button_pressed() -> void:
-	emit_signal("character_selected")
+func _on_character_button_pressed(btn) -> void:
+	emit_signal("character_selected", btn.character_data)
 
 func _get_configuration_warning() -> String:
 	var warning = ""

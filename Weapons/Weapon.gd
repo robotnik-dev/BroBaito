@@ -1,8 +1,8 @@
 extends Node2D
 
+export(Resource) var weapon_data
 export(PackedScene) var bullet_scene
 export(float) var bullet_speed = 1000.0
-export(float) var attack_speed = 10.0
 
 var enemies_in_range: Array
 
@@ -16,7 +16,7 @@ func init() -> void:
 
 func _ready() -> void:
 	attack_radius.shape.radius = player_stats.attack_range
-	cooldown.wait_time = 1 / (attack_speed + player_stats.attack_speed)
+	cooldown.wait_time = 1 / (weapon_data.base_attacks_per_second + player_stats.attack_speed)
 
 func fire() -> void:
 	if not enemies_in_range:
@@ -26,7 +26,13 @@ func fire() -> void:
 	var spawn_rotation = transform.get_rotation()
 	var direction = (spawn_location - global_position).normalized()
 	
-	bullet.init(spawn_location, spawn_rotation, bullet_speed, direction)
+	bullet.init(
+		spawn_location,
+		spawn_rotation,
+		bullet_speed,
+		direction,
+		weapon_data.base_damage
+	)
 	var world = get_tree().get_nodes_in_group("world")
 	world[0].add_child(bullet)
 	bullet.owning_weapon = self
@@ -43,6 +49,8 @@ func _get_position_of_nearest_enemy() -> Vector2:
 	var nearest_enemy = enemies[0]
 	
 	for enemy in enemies:
+		if not enemy.spawned:
+			continue
 		var distance_to_nearest_enemy = global_position.distance_squared_to(nearest_enemy.global_position)
 		var distance: float = global_position.distance_squared_to(enemy.global_position)
 		var nearest: float = min(distance_to_nearest_enemy, distance)

@@ -8,9 +8,6 @@ export(PackedScene) var weapon_scene
 export(NodePath) var weapon_manager_path
 export(Resource) var stats
 
-#DEBUG
-export(PackedScene) var _item_scene
-
 var get_camera_limits
 
 var _horizontal: float
@@ -19,13 +16,16 @@ var _velocity: Vector2
 
 onready var weapon_manager = get_node(weapon_manager_path)
 onready var camera = $Camera2D
-onready var items = $Items
+onready var item_manager = $ItemManager
 
-func init() -> void:
+func init(selection: Dictionary) -> void:
+	# TODO: add_item
+	# TODO: add_start_weapon
+	add_item(selection.get("character"))
 	set_camera_limits()
 
 func _ready() -> void:
-	_hide_items()
+	pass
 
 func _physics_process(delta: float) -> void:
 	_apply_movement(delta)
@@ -44,31 +44,23 @@ func set_camera_limits() -> void:
 func activate_camera(value: bool) -> void:
 	camera.current = value
 
-func add_item(item_path: String) -> void:
-	var item_scene = load(item_path)
-	var item = item_scene.instance()
-	items.add_child(item)
-	_hide_items()
-
 func add_weapon(_weapon_scene: PackedScene) -> void:
 	weapon_manager.add_weapon(_weapon_scene)
 
+func add_item(item: Resource) -> void:
+	item_manager.add_item(item)
+
 func recieve_damage(damage: float) -> void:
-	stats.hp = stats.hp - damage
+	stats.hp -= damage
 	if stats.hp <= 0:
 		die()
 
 func die() -> void:
-	# TODO: delete weapons
 	weapon_manager.delete_all_weapons()
 	emit_signal("died")
 
 func reset_stats() -> void:
 	stats.reset()
-
-func _hide_items() -> void:
-	for item in items.get_children():
-		item.hide()
 
 func _apply_movement(_delta: float) -> void:
 	_horizontal = (
@@ -87,3 +79,7 @@ func _on_LootRange_area_entered(area: Area2D) -> void:
 	if area.owner.has_method("get_experience_value"):
 		stats.experience += area.owner.get_experience_value()
 		area.owner.queue_free()
+
+func _on_Timer_timeout() -> void:
+	return
+	print("damage: " + String(stats.damage))

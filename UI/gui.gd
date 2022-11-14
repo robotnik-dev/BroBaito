@@ -1,7 +1,7 @@
 class_name GUI
 extends Control
 
-signal selection_done(character, start_weapon, difficulty)
+signal selection_done(selection)
 
 enum UI {
 	DEFAULT,
@@ -21,6 +21,8 @@ export(PackedScene) var shop_scene
 export(PackedScene) var game_over_scene
 
 var current: int = UI.DEFAULT
+
+var _selection: Dictionary = {}
 
 onready var _start_screen = start_screen_scene.instance()
 onready var _player_selection = player_selection_scene.instance()
@@ -74,10 +76,11 @@ func _on_start_game_pressed() -> void:
 func _on_new_game_pressed() -> void:
 	show_startscreen()
 
-func _on_character_selected() -> void:
+func _on_character_selected(character_data: Resource) -> void:
 	# TODO: choose weapon
 	# TODO: choose difficulty
-	emit_signal("selection_done")
+	_selection["character"] = character_data
+	emit_signal("selection_done", _selection)
 	show_wave_ui()
 
 func _on_player_died() -> void:
