@@ -25,7 +25,7 @@ func stop() -> void:
 func _despawn_enemies() -> void:
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
-		enemy.queue_free()
+		enemy.despawn()
 	
 func _reset_timer() -> void:
 	spawn_timer.stop()

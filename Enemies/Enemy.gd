@@ -55,9 +55,12 @@ func recieve_damage(damage: float) -> void:
 	if health <= 0:
 		die()
 
+func despawn() -> void:
+	call_deferred("queue_free")
+
 func die() -> void:
 	drop_loot()
-	queue_free()
+	call_deferred("queue_free")
 
 func drop_loot() -> void:
 	var loot = loot_scene.instance()
