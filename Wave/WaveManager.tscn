@@ -1,15 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Wave/wave_manager.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Wave/wave_one.tres" type="Resource" id=2]
+[ext_resource path="res://Wave/wave_two.tres" type="Resource" id=3]
 
 [node name="WaveManager" type="Node"]
 script = ExtResource( 1 )
-enemy_scene = ExtResource( 2 )
+waves = [ ExtResource( 2 ), ExtResource( 3 ) ]
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
 [node name="WaveTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="WaveTimer" to="." method="_on_WaveTimer_timeout"]

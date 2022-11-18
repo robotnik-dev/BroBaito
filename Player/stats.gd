@@ -135,6 +135,10 @@ func get_stats() -> Array:
 	
 	return stats
 
+func leveled() -> bool:
+	#TODO
+	return false
+
 func get_max_hp() -> float:
 	return max_hp
 

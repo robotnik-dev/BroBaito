@@ -21,6 +21,8 @@ export(PackedScene) var shop_scene
 export(PackedScene) var game_over_scene
 
 var current: int = UI.DEFAULT
+var player_stats: Resource = preload("res://Player/player_stats.tres")
+var world
 
 var _selection: Dictionary = {}
 
@@ -31,8 +33,8 @@ onready var _levelup = levelup_scene.instance()
 onready var _shop = shop_scene.instance()
 onready var _game_over = game_over_scene.instance()
 
-func init() -> void:
-	pass
+func init(_world) -> void:
+	_wave_ui._remaining_time = funcref(_world, "get_remaining_wave_time")
 
 func _ready() -> void:
 	_start_screen.connect("start_game_pressed", self, "_on_start_game_pressed")
@@ -85,6 +87,13 @@ func _on_character_selected(character_data: Resource) -> void:
 
 func _on_player_died() -> void:
 	show_game_over()
+
+func _on_wave_cleared(wave_number: int) -> void:
+	# TODO multiple level ups
+	if player_stats.leveled():
+		show_levelup_selection()
+	else:
+		show_shop()
 
 func _remove_current_ui() -> void:
 	match current:

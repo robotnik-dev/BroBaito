@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource( 1 )
-wave_number = 1
+wave_number = 2
 enemies = [ ExtResource( 2 ) ]
-wave_time = 15
+wave_time = 20
 boss = false
 bosses = [  ]
