@@ -5,6 +5,7 @@ export(NodePath) var health_path
 
 onready var experience = get_node(experience_path)
 onready var health = get_node(health_path)
+onready var attribute_window = $AttributeWindow
 
 var player_stats: Resource = preload("res://Player/player_stats.tres")
 
@@ -21,3 +22,4 @@ func _on_attribute_changed(attribute: String, value: float) -> void:
 func reset() -> void:
 	health.max_value = player_stats.max_hp
 	health.value = player_stats.hp
+	attribute_window.reset()

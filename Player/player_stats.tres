@@ -4,22 +4,5 @@
 
 [resource]
 script = ExtResource( 1 )
-max_hp = 10.0
-hp_regen = 0.0
-lifesteal = 0.0
-damage = 0.0
-meele_damage = 0.0
-ranged_damage = 0.0
-elemental_damage = 0.0
-attack_speed = 10.0
-crit_chance = 0.0
-engineering = 0.0
-attack_range = 200.0
-armor = 0.0
-dodge = 0.0
-speed = 600.0
-luck = 0.0
-harvesting = 0.0
-hp = 10.0
-experience = 0.0
-money = 0.0
+default_max_hp = 10.0
+default_speed = 200.0

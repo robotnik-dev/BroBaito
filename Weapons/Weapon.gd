@@ -15,8 +15,8 @@ func init() -> void:
 	pass
 
 func _ready() -> void:
-	attack_radius.shape.radius = player_stats.attack_range
-	cooldown.wait_time = 1 / (weapon_data.base_attacks_per_second + player_stats.attack_speed)
+	attack_radius.shape.radius = player_stats.get_attack_range_bonus()
+	cooldown.wait_time = 1 / (weapon_data.base_attacks_per_second + player_stats.get_attack_speed_bonus())
 
 func fire() -> void:
 	if not enemies_in_range:

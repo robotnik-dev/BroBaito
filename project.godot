@@ -45,11 +45,6 @@ _global_script_classes=[ {
 "path": "res://Weapons/player_bullet.gd"
 }, {
 "base": "Resource",
-"class": "Stats",
-"language": "GDScript",
-"path": "res://Player/stats.gd"
-}, {
-"base": "Resource",
 "class": "Wave",
 "language": "GDScript",
 "path": "res://Wave/wave_data.gd"
@@ -67,7 +62,6 @@ _global_script_class_icons={
 "ItemData": "",
 "Player": "",
 "PlayerBullet": "",
-"Stats": "",
 "Wave": "",
 "WeaponData": ""
 }

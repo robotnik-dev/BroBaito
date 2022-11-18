@@ -6,20 +6,23 @@ signal died
 
 export(PackedScene) var weapon_scene
 export(NodePath) var weapon_manager_path
-export(Resource) var stats
 
-var get_camera_limits
+var player_stats = preload("res://Player/player_stats.tres")
+var reduction_curve = preload("res://misc/damage_reduction.tres")
+var _get_camera_limits
+var _add_item
 
 var _horizontal: float
 var _vertical: float
 var _velocity: Vector2
 
+#DEBUG
+var _duck = preload("res://Items/duck.tres")
+
 onready var weapon_manager = get_node(weapon_manager_path)
 onready var camera = $Camera2D
-onready var item_manager = $ItemManager
 
 func init(selection: Dictionary) -> void:
-	# TODO: add_item
 	# TODO: add_start_weapon
 	add_item(selection.get("character"))
 	set_camera_limits()
@@ -32,10 +35,11 @@ func _physics_process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire"):
-		add_weapon(weapon_scene)
+#		add_weapon(weapon_scene)
+		add_item(_duck)
 
 func set_camera_limits() -> void:
-	var limits = get_camera_limits.call_func()
+	var limits = _get_camera_limits.call_func()
 	camera.limit_left = limits[0]
 	camera.limit_right = limits[1]
 	camera.limit_top = limits[2]
@@ -48,22 +52,24 @@ func add_weapon(_weapon_scene: PackedScene) -> void:
 	weapon_manager.add_weapon(_weapon_scene)
 
 func add_item(item: Resource) -> void:
-	item_manager.add_item(item)
+	_add_item.call_func(item)
 
 func recieve_damage(damage: float) -> void:
-	stats.hp -= damage
-	if stats.hp <= 0:
+	var offset = 0.5 + player_stats.get_armor_bonus() / 200.0
+	var reduction = reduction_curve.interpolate(offset)
+	player_stats.hp -= damage * (1 - reduction)
+	if player_stats.hp <= 0:
 		die()
 
 func die() -> void:
 	weapon_manager.delete_all_weapons()
 	emit_signal("died")
 
-func reset_stats() -> void:
-	stats.reset()
+func reset_player_stats() -> void:
+	player_stats.reset()
 
 func _apply_movement(_delta: float) -> void:
-	_horizontal = (
+	_horizontal =(
 		Input.get_action_strength("right") - Input.get_action_strength("left")
 	)
 	_vertical =(
@@ -72,14 +78,18 @@ func _apply_movement(_delta: float) -> void:
 	
 	_velocity.x = _horizontal
 	_velocity.y = _vertical
-	_velocity = _velocity.normalized() * stats.speed
+	_velocity = _velocity.normalized() * (
+		player_stats.get_speed() * 
+		(1 + player_stats.get_speed_bonus() / 100.0))
+	
 	_velocity = move_and_slide(_velocity)
 
 func _on_LootRange_area_entered(area: Area2D) -> void:
 	if area.owner.has_method("get_experience_value"):
-		stats.experience += area.owner.get_experience_value()
+		player_stats.experience += area.owner.get_experience_value()
 		area.owner.queue_free()
 
 func _on_Timer_timeout() -> void:
-	return
-	print("damage: " + String(stats.damage))
+	pass
+#	print("damage: " + String(player_stats._damage_bonus))
+#	print("move speed: " + String((player_stats.speed * player_stats._speed_bonus / 100.0)))

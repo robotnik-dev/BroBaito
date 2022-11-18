@@ -1,14 +1,19 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Items/item_data.gd" type="Script" id=1]
-[ext_resource path="res://steelwings.jpg" type="Texture" id=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/bro.png-76de743641bb9f25412214d659638c49.stex"
 
 [resource]
 script = ExtResource( 1 )
 item_name = ""
 effect = [ "Damage +10%", "Luck -2%" ]
-image = ExtResource( 2 )
+image = SubResource( 1 )
 modifier = {
+"armor": 5.0,
 "damage": 10.0,
-"luck": -2.0
+"luck": -2.0,
+"speed": 25.0
 }
