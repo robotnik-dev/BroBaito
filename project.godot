@@ -24,15 +24,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/gui.gd"
 }, {
-"base": "Node",
-"class": "Item",
-"language": "GDScript",
-"path": "res://Items/item.gd"
-}, {
 "base": "Resource",
 "class": "ItemData",
 "language": "GDScript",
 "path": "res://Items/item_data.gd"
+}, {
+"base": "Resource",
+"class": "ItemTable",
+"language": "GDScript",
+"path": "res://Items/item_table.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -58,8 +58,8 @@ _global_script_class_icons={
 "Bullet": "",
 "Enemy": "",
 "GUI": "",
-"Item": "",
 "ItemData": "",
+"ItemTable": "",
 "Player": "",
 "PlayerBullet": "",
 "Wave": "",
@@ -72,9 +72,24 @@ config/name="BroBaito"
 run/main_scene="res://Core/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Utils="*res://Utils/utils.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/table_dock/plugin.cfg" )
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[importer_defaults]
+
+csv_translation={
+"compress": true,
+"delimiter": 0
+}
 
 [input]
 

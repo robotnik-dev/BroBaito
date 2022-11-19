@@ -10,21 +10,18 @@ export(NodePath) var weapon_manager_path
 var player_stats = preload("res://Player/player_stats.tres")
 var reduction_curve = preload("res://misc/damage_reduction.tres")
 var _get_camera_limits
-var _add_item
 
 var _horizontal: float
 var _vertical: float
 var _velocity: Vector2
 
-#DEBUG
-var _duck = preload("res://Items/duck.tres")
+var item = preload("res://Items/items.tres")
 
 onready var weapon_manager = get_node(weapon_manager_path)
 onready var camera = $Camera2D
 
 func init(selection: Dictionary) -> void:
 	# TODO: add_start_weapon
-	add_item(selection.get("character"))
 	set_camera_limits()
 
 func _ready() -> void:
@@ -35,8 +32,7 @@ func _physics_process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire"):
-#		add_weapon(weapon_scene)
-		add_item(_duck)
+		add_weapon(weapon_scene)
 
 func set_camera_limits() -> void:
 	var limits = _get_camera_limits.call_func()
@@ -50,9 +46,6 @@ func activate_camera(value: bool) -> void:
 
 func add_weapon(_weapon_scene: PackedScene) -> void:
 	weapon_manager.add_weapon(_weapon_scene)
-
-func add_item(item: Resource) -> void:
-	_add_item.call_func(item)
 
 func recieve_damage(damage: float) -> void:
 	var offset = 0.5 + player_stats.get_armor_bonus() / 200.0

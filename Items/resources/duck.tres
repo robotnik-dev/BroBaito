@@ -8,10 +8,12 @@ load_path = "res://.import/bro.png-76de743641bb9f25412214d659638c49.stex"
 
 [resource]
 script = ExtResource( 1 )
-item_name = "Normalo"
-effect = [ "+5 % Damage", "+5 % Harvesting" ]
+item_name = "Duck"
+description = ""
 image = SubResource( 1 )
 modifier = {
-"damage": 5.0,
-"harvesting": 5.0
+"armor": 5.0,
+"damage": 10.0,
+"luck": -2.0,
+"speed": 25.0
 }
