@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/Items/item.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Duck"
+description = ""
+effect = ""
+Bonuses = {
+"armor": 0,
+"attack_range": 0,
+"attack_speed": 0,
+"crit_chance": 0,
+"damage": -2,
+"dodge": 0,
+"elemental_damage": 0,
+"engineering": 0,
+"experience": 0,
+"harvesting": 0,
+"hp_regen": 0,
+"lifesteal": 0,
+"luck": 10,
+"max_hp": 0,
+"meele_damage": 0,
+"money": 0,
+"ranged_damage": 0,
+"speed": 0
+}

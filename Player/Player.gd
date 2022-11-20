@@ -15,8 +15,6 @@ var _horizontal: float
 var _vertical: float
 var _velocity: Vector2
 
-var item = preload("res://Items/items.tres")
-
 onready var weapon_manager = get_node(weapon_manager_path)
 onready var camera = $Camera2D
 
