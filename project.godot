@@ -12,22 +12,12 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://Weapons/bullet.gd"
-}, {
-"base": "HBoxContainer",
-"class": "DataPropertyEditor",
-"language": "GDScript",
-"path": "res://addons/database/property_editor/property_editor.gd"
-}, {
-"base": "VBoxContainer",
-"class": "DataPropertyEditorWide",
-"language": "GDScript",
-"path": "res://addons/database/property_editor/property_editor_wide.gd"
+"path": "res://Weapons/Bullet.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://Enemies/enemy.gd"
+"path": "res://Enemies/Enemy.gd"
 }, {
 "base": "Control",
 "class": "GUI",
@@ -39,10 +29,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://data/Items/item.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "Reference",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Player/player.gd"
+"path": "res://Player/Player.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "PlayerBullet",
@@ -66,8 +56,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Bullet": "",
-"DataPropertyEditor": "",
-"DataPropertyEditorWide": "",
 "Enemy": "",
 "GUI": "",
 "Item": "",
@@ -90,7 +78,7 @@ Utils="*res://Utils/utils.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/database/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [gui]
 
