@@ -1,6 +1,5 @@
 extends Node2D
 
-export(Resource) var weapon_data
 export(PackedScene) var bullet_scene
 export(float) var bullet_speed = 1000.0
 
@@ -16,7 +15,7 @@ func init() -> void:
 
 func _ready() -> void:
 	attack_radius.shape.radius = player_stats.get_attack_range_bonus()
-	cooldown.wait_time = 1 / (weapon_data.base_attacks_per_second + player_stats.get_attack_speed_bonus())
+#	cooldown.wait_time = 1 / (weapon_data.base_attacks_per_second + player_stats.get_attack_speed_bonus())
 
 func fire() -> void:
 	if not enemies_in_range:
@@ -30,9 +29,8 @@ func fire() -> void:
 		spawn_location,
 		spawn_rotation,
 		bullet_speed,
-		direction,
-		weapon_data.base_damage
-	)
+		direction)
+#		weapon_data.base_damage
 	var world = get_tree().get_nodes_in_group("world")
 	world[0].add_child(bullet)
 	bullet.owning_weapon = self

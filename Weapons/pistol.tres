@@ -1,10 +1,22 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://Weapons/weapon_data.gd" type="Script" id=1]
 [ext_resource path="res://sprites/Items/bro.png" type="Texture" id=2]
 
+[sub_resource type="GDScript" id=1]
+script/source = "extends Resource
+class_name WeaponData
+
+export(String) var weapon_name
+export(Array, String) var effect
+export(Texture) var image
+
+export(float) var base_attacks_per_second
+export(float) var base_damage
+export(float) var base_range
+"
+
 [resource]
-script = ExtResource( 1 )
+script = SubResource( 1 )
 weapon_name = "Pistol"
 effect = [  ]
 image = ExtResource( 2 )

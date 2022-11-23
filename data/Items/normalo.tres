@@ -1,15 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://data/Items/item.gd" type="Script" id=1]
-[ext_resource path="res://sprites/Items/bro.png" type="Texture" id=2]
+[ext_resource path="res://data/Items/item_effect.gd" type="Script" id=1]
 
 [resource]
 script = ExtResource( 1 )
-name = "Normalo"
-description = "normal description"
-effect = ""
-image = ExtResource( 2 )
-Bonuses = {
+Effects = {
 "armor": 0,
 "attack_range": 0,
 "attack_speed": 0,

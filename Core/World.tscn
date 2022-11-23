@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Core/world.gd" type="Script" id=1]
+[ext_resource path="res://Core/World_script.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/enemy_spawner.gd" type="Script" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Wave/Arena.tscn" type="PackedScene" id=4]

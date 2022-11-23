@@ -1,0 +1,37 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://addons/keh_gddb/database.gd" type="Script" id=1]
+[ext_resource path="res://addons/keh_gddb/dbtable.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+table_name = "Items"
+id_type = 2
+column = [ {
+"name": "Name",
+"value_type": 1000
+}, {
+"name": "Image",
+"value_type": 1004
+}, {
+"name": "Unique Effect",
+"value_type": 1001
+}, {
+"name": "Effect",
+"value_type": 1006
+} ]
+ref_table = {
+}
+rowlist = [ {
+"Effect": "res://data/Items/normalo.tres",
+"Image": "res://sprites/Items/bro.png",
+"Name": "Normalo",
+"Unique Effect": false,
+"id": 3161026589
+} ]
+
+[resource]
+script = ExtResource( 1 )
+table = {
+"Items": SubResource( 1 )
+}
