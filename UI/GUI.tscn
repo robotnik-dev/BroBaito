@@ -8,9 +8,7 @@
 [ext_resource path="res://UI/LevelUp.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/GameOver.tscn" type="PackedScene" id=7]
 
-[node name="GUI" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="GUI" type="CanvasLayer"]
 script = ExtResource( 1 )
 start_screen_scene = ExtResource( 2 )
 player_selection_scene = ExtResource( 3 )

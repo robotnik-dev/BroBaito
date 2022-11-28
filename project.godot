@@ -74,7 +74,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/keh_gddb/database.gd"
 }, {
-"base": "Control",
+"base": "CanvasLayer",
 "class": "GUI",
 "language": "GDScript",
 "path": "res://UI/gui.gd"
@@ -140,9 +140,9 @@ _global_script_classes=[ {
 "path": "res://addons/keh_ui/inventory/specialslot.gd"
 }, {
 "base": "Resource",
-"class": "ItemEffect",
+"class": "Item",
 "language": "GDScript",
-"path": "res://data/Items/item_effect.gd"
+"path": "res://data/Items/item.gd"
 }, {
 "base": "Reference",
 "class": "NetCustomProperty",
@@ -199,7 +199,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/keh_network/network.gd"
 }, {
-"base": "Reference",
+"base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player/Player_script.gd"
@@ -233,6 +233,11 @@ _global_script_classes=[ {
 "class": "SpinSlider",
 "language": "GDScript",
 "path": "res://addons/keh_ui/spin_slider/spin_slider.gd"
+}, {
+"base": "Resource",
+"class": "Stats",
+"language": "GDScript",
+"path": "res://Player/stats.gd"
 }, {
 "base": "CustomControlBase",
 "class": "TabularBox",
@@ -301,7 +306,7 @@ _global_script_class_icons={
 "InventoryHighlight": "",
 "InventorySlot": "",
 "InventorySpecialSlot": "res://addons/keh_ui/inventory/specialslot.png",
-"ItemEffect": "",
+"Item": "",
 "NetCustomProperty": "",
 "NetDefaultSpawner": "",
 "NetEventInfo": "",
@@ -320,6 +325,7 @@ _global_script_class_icons={
 "Smooth3D": "",
 "SnapEntityBase": "",
 "SpinSlider": "",
+"Stats": "",
 "TabularBox": "",
 "TabularDataSourceBase": "",
 "TabularSimpleDataSource": "",
@@ -334,11 +340,17 @@ _global_script_class_icons={
 
 config/name="BroBaito"
 run/main_scene="res://Core/Main.tscn"
-config/icon="res://icon.png"
+config/icon="res://sprites/Items/normalo.png"
 
 [autoload]
 
 Utils="*res://Utils/utils.gd"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/borderless=true
 
 [editor_plugins]
 

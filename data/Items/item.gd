@@ -1,7 +1,7 @@
-class_name ItemEffect
+class_name Item
 extends Resource
 
-export(Dictionary) var Effects = {
+export(Dictionary) var modifiers = {
 	"max_hp" : 0,
 	"hp_regen" : 0,
 	"lifesteal" : 0,
@@ -21,3 +21,9 @@ export(Dictionary) var Effects = {
 	"money" : 0,
 	"experience" : 0
 }
+
+var _player_stats: Stats = preload("res://Player/player_stats.tres")
+
+func apply_modifiers() -> void:
+	for modifier_key in modifiers.keys():
+		_player_stats.add_bonus(modifier_key, modifiers.get(modifier_key))

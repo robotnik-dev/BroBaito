@@ -1,3 +1,4 @@
+class_name Stats
 extends Resource
 
 signal attribute_changed(attribute, value)

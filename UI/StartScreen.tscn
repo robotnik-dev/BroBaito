@@ -2,9 +2,10 @@
 
 [ext_resource path="res://UI/start_screen.gd" type="Script" id=1]
 
-[node name="StartScreen" type="CanvasLayer"]
+[node name="StartScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 1 )
-play_button_path = NodePath("MarginContainer/VBoxContainer/PlayButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0

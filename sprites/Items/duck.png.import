@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bro.png-a426b9d7454177e389c8d2a0659387c4.stex"
+path="res://.import/duck.png-e057b74438974d546c34dc95f53c91d1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Items/bro.png"
-dest_files=[ "res://.import/bro.png-a426b9d7454177e389c8d2a0659387c4.stex" ]
+source_file="res://sprites/Items/duck.png"
+dest_files=[ "res://.import/duck.png-e057b74438974d546c34dc95f53c91d1.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

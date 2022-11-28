@@ -14,20 +14,32 @@ column = [ {
 "name": "Image",
 "value_type": 1004
 }, {
-"name": "Unique Effect",
-"value_type": 1001
-}, {
-"name": "Effect",
+"name": "Data",
 "value_type": 1006
+}, {
+"name": "Character",
+"value_type": 1001
 } ]
 ref_table = {
 }
 rowlist = [ {
-"Effect": "res://data/Items/normalo.tres",
-"Image": "res://sprites/Items/bro.png",
+"Character": true,
+"Data": "res://data/Items/normalo.tres",
+"Image": "res://sprites/Items/normalo_icon.png",
 "Name": "Normalo",
-"Unique Effect": false,
 "id": 3161026589
+}, {
+"Character": true,
+"Data": "res://data/Items/crazy.tres",
+"Image": "res://sprites/Items/crazy_icon.png",
+"Name": "Crazy",
+"id": 2668139190
+}, {
+"Character": true,
+"Data": "res://data/Items/duck.tres",
+"Image": "res://sprites/Items/duck_icon.png",
+"Name": "Duck",
+"id": 4134715227
 } ]
 
 [resource]

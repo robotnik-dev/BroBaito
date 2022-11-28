@@ -2,10 +2,9 @@
 
 [ext_resource path="res://data/Items/item.gd" type="Script" id=1]
 
-
 [resource]
 script = ExtResource( 1 )
-Effects = {
+modifiers = {
 "armor": 0,
 "attack_range": 0,
 "attack_speed": 0,
@@ -15,11 +14,11 @@ Effects = {
 "elemental_damage": 0,
 "engineering": 0,
 "experience": 0,
-"harvesting": 5,
+"harvesting": 0,
 "hp_regen": 0,
 "lifesteal": 0,
 "luck": 0,
-"max_hp": 5,
+"max_hp": 0,
 "meele_damage": 0,
 "money": 0,
 "ranged_damage": 0,

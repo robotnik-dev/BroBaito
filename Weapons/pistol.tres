@@ -1,6 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://sprites/Items/bro.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Items/normalo.png" type="Texture" id=2]
+
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Resource

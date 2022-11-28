@@ -1,5 +1,5 @@
 class_name GUI
-extends Control
+extends CanvasLayer
 
 signal selection_done(selection)
 
